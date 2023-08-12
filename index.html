@@ -52,8 +52,10 @@
         }
 
        async function getBankDetails() {
+          
             setError("");
             if(validateIFSCCode()) {
+                 bankDetails = "";
                 await fetchBankDetails();
                 setBankDetailsVisibility("block");
                 setBankDetails();
