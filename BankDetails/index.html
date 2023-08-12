@@ -20,11 +20,11 @@
     </div>
     <div id="bankDetails" class="card m-2 text-start">
         <div class="card-body m-2 border border-dark rounded fw-bold fs-4 bg-dark text-light">
-            <p id="bankName">NAME: </p>
-            <p id="ifsc">IFSC CODE: </p>
-            <p id="branch">BRANCH: </p>           
-            <p id="bankAddress">ADDRESS: </p>
-            <p id="contact">CONTACT: </p>
+            <p id="bankName"></p>
+            <p id="ifsc"></p>
+            <p id="branch"></p>           
+            <p id="bankAddress"></p>
+            <p id="contact"></p>
             <p id="bankcode">BANKCODE: </p>
         </div>
         
@@ -69,12 +69,12 @@
 
         function setBankDetails() {
            // console.log(bankDetails.BANK);
-            document.getElementById("bankName").innerHTML += bankDetails.BANK;
-            document.getElementById("bankAddress").innerHTML += bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
-            document.getElementById("branch").innerHTML += bankDetails.BRANCH;
-            document.getElementById("contact").innerHTML += bankDetails.CONTACT;
-            document.getElementById("bankcode").innerHTML += bankDetails.BANKCODE;
-            document.getElementById("ifsc").innerHTML += bankDetails.IFSC;
+            document.getElementById("bankName").innerHTML = "NAME: " + bankDetails.BANK;
+            document.getElementById("bankAddress").innerHTML = "ADDRESS" + bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
+            document.getElementById("branch").innerHTML = "BRANCH: " + bankDetails.BRANCH;
+            document.getElementById("contact").innerHTML = "CONTACT" + bankDetails.CONTACT;
+            document.getElementById("bankcode").innerHTML = "BANKCODE: " + bankDetails.BANKCODE;
+            document.getElementById("ifsc").innerHTML = "IFSC CODE: " + bankDetails.IFSC;
            
         }
 
