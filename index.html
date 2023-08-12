@@ -69,15 +69,14 @@
             //setBankDetails();
         }
 
-        function setBankDetails() {
+      function setBankDetails() {
            // console.log(bankDetails.BANK);
-            document.getElementById("bankName").innerHTML += bankDetails.BANK;
-            document.getElementById("bankAddress").innerHTML += bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
-            document.getElementById("branch").innerHTML += bankDetails.BRANCH;
-            document.getElementById("contact").innerHTML += bankDetails.CONTACT;
-            document.getElementById("bankcode").innerHTML += bankDetails.BANKCODE;
-            document.getElementById("ifsc").innerHTML += bankDetails.IFSC;
-           
+            document.getElementById("bankName").innerHTML = "NAME: " + bankDetails.BANK;
+            document.getElementById("bankAddress").innerHTML = "ADDRESS" + bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
+            document.getElementById("branch").innerHTML = "BRANCH: " + bankDetails.BRANCH;
+            document.getElementById("contact").innerHTML = "CONTACT" + bankDetails.CONTACT;
+            document.getElementById("bankcode").innerHTML = "BANKCODE: " + bankDetails.BANKCODE;
+            document.getElementById("ifsc").innerHTML = "IFSC CODE: " + bankDetails.IFSC;
         }
 
         function setError(msg) {
