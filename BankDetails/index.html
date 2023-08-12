@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        
+    </style>
+    <title>Bank Details</title>
+</head>
+<body class="text-center m-5 card">
+    <h3 class="bg-dark text-light p-1"> Get Bank Details or IFSC Code</h3>
+    <div id="inputField" class="m-3 card"> 
+       
+            <input class="m-2 form-control fs-5 fw-bold text-uppercase" id="ifscCode" type="text" style="width: 40%; align-items: center;" maxlength="11" minlength="11" placeholder="Enter IFSC Code" />
+            <button type="button" class="m-2 btn btn-primary fs-5 rounded" style="width: 20%;" onclick="getBankDetails()">Fetch</button>
+        
+    </div>
+    <div id="bankDetails" class="card m-2 text-start">
+        <div class="card-body m-2 border border-dark rounded fw-bold fs-4 bg-dark text-light">
+            <p id="bankName">NAME: </p>
+            <p id="ifsc">IFSC CODE: </p>
+            <p id="branch">BRANCH: </p>           
+            <p id="bankAddress">ADDRESS: </p>
+            <p id="contact">CONTACT: </p>
+            <p id="bankcode">BANKCODE: </p>
+        </div>
+        
+    </div>
+    <script>
+        var ifscCode = "";
+
+        setBankDetailsVisibility("none");
+
+        var bankDetails = "";
+
+        function setBankDetailsVisibility(visibility) {
+            let bankDetailsCard = document.getElementById("bankDetails");
+            bankDetailsCard.style.display = visibility;
+        }
+
+        function validateIFSCCode() {
+            ifscCode = document.getElementById("ifscCode").value;
+            if(ifscCode.length === 11) {
+                return true;
+            } else {
+                setError("Enter a valid IFSC Code.");
+                return false;
+            }
+        }
+
+       async function getBankDetails() {
+            setError("");
+            if(validateIFSCCode()) {
+                await fetchBankDetails();
+                setBankDetailsVisibility("block");
+                setBankDetails();
+            }  
+        }
+
+       async function fetchBankDetails() {
+        let response = await fetch("https://ifsc.razorpay.com/"+ifscCode);
+            bankDetails = await response.json();
+            console.log(bankDetails);
+            //setBankDetails();
+        }
+
+        function setBankDetails() {
+           // console.log(bankDetails.BANK);
+            document.getElementById("bankName").innerHTML += bankDetails.BANK;
+            document.getElementById("bankAddress").innerHTML += bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
+            document.getElementById("branch").innerHTML += bankDetails.BRANCH;
+            document.getElementById("contact").innerHTML += bankDetails.CONTACT;
+            document.getElementById("bankcode").innerHTML += bankDetails.BANKCODE;
+            document.getElementById("ifsc").innerHTML += bankDetails.IFSC;
+           
+        }
+
+        function setError(msg) {
+            let parentElement = document.getElementById("inputField");
+            const errorNode = document.createElement("p");
+            errorNode.setAttribute("class", "text-danger fs-5");
+            errorNode.setAttribute("id", "errorMsg");
+            if(msg != "") {
+                errorNode.innerHTML = msg;
+                parentElement.appendChild(errorNode);
+             } else {
+                var element =  document.getElementById('errorMsg');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                  element.remove();
+                }
+             }
+        }
+    </script>
+</body>
+</html>
