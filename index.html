@@ -14,8 +14,8 @@
     <h3 class="bg-dark text-light p-1"> Get Bank Details or IFSC Code</h3>
     <div id="inputField" class="m-3 card"> 
        
-            <input class="m-2 form-control fs-5 fw-bold text-uppercase" id="ifscCode" type="text" style="width: 40%; align-items: center;" maxlength="11" minlength="11" placeholder="Enter IFSC Code" />
-            <button type="button" class="m-2 btn btn-primary fs-5 rounded" style="width: 20%;" onclick="getBankDetails()">Fetch</button>
+            <input class="m-2 form-control fs-5 fw-bold text-uppercase" id="ifscCode" type="text" style="width: 60%; align-items: center;" maxlength="11" minlength="11" placeholder="Enter IFSC Code" />
+            <button type="button" class="m-2 btn btn-primary fs-5 rounded" style="width: 25%;" onclick="getBankDetails()">Fetch</button>
         
     </div>
     <div id="bankDetails" class="card m-2 text-start">
@@ -71,9 +71,9 @@
      function setBankDetails() {
            // console.log(bankDetails.BANK);
             document.getElementById("bankName").innerHTML = "NAME: " + bankDetails.BANK;
-            document.getElementById("bankAddress").innerHTML = "ADDRESS" + bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
+            document.getElementById("bankAddress").innerHTML = "ADDRESS: " + bankDetails.ADDRESS + ", " + bankDetails.DISTRICT + ", " + bankDetails.CITY + ", " + bankDetails.STATE;
             document.getElementById("branch").innerHTML = "BRANCH: " + bankDetails.BRANCH;
-            document.getElementById("contact").innerHTML = "CONTACT" + bankDetails.CONTACT;
+            document.getElementById("contact").innerHTML = "CONTACT: " + bankDetails.CONTACT;
             document.getElementById("bankcode").innerHTML = "BANKCODE: " + bankDetails.BANKCODE;
             document.getElementById("ifsc").innerHTML = "IFSC CODE: " + bankDetails.IFSC;
            
